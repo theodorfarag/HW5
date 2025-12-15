@@ -1,3 +1,16 @@
+/**
+ * Author: Theodor Farag
+ * Course: COMP.4630 – Mobile App Development I
+ * Assignment: HW5 – Scrabble Game
+ *
+ * Description:
+ * Contains logic related to game state, UI behavior, or scoring.
+ *
+ * Contact:
+ * Email: theodor_farag@uml.edu
+ */
+
+
 // Import the core Scrabble game logic
 import { Scrabble } from "./Scrabble.js";
 

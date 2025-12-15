@@ -1,48 +1,113 @@
+<!--
+    Author: Theodor Farag
+    Course: COMP.4630 – Mobile App Development I
+    Assignment: HW5 – Scrabble Game
+
+    Description:
+    Main HTML structure for the Scrabble game interface.
+    Defines layout, board, tile rack, and UI components.
+
+    Contact:
+    Email: theodor_farag@student.uml.edu
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Character encoding -->
     <meta charset="UTF-8">
+
+    <!-- Responsive viewport for mobile and desktop -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page title -->
     <title>HW5 Scrable</title>
+
+    <!-- Favicon -->
     <link rel="icon" href="./images/scrabble.png" type="images/png">
+
+    <!-- Tailwind CSS (browser build for rapid styling) -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Google Fonts (used throughout UI) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom stylesheet -->
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">    
+
+    <!-- jQuery UI base styles (required for draggable/droppable) -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+
+    <!-- jQuery core library -->
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+    <!-- jQuery UI (drag-and-drop functionality) -->
     <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
 </head>
+
 <body>
-    <!-- Nav Bar that is responsive -->
-    <nav class=" bg-[#283618] text-white border-b-2 border-amber-950 w-full h-auto">
+
+    <!-- Responsive navigation bar -->
+    <nav class="bg-[#283618] text-white border-b-2 border-amber-950 w-full h-auto">
         <ul class="flex flex-row md:text-2xl h-full items-center">
+
+            <!-- Logo / Home link -->
             <li class="active">
                 <a href="./index.html">
-                    <img src="./images/scrabble.png" alt="Scrable image" class="size-12"></li>
+                    <img src="./images/scrabble.png" alt="Scrable image" class="size-12">
                 </a>
             </li>
+
+            <!-- Navigation links -->
             <li><a href="./index.html">Home</a></li>
             <li class="active"><a href="/">Assignment</a></li>
             <li><a href="/">Extra Cedit</a></li>
         </ul>
     </nav>
+
+    <!-- Main game container -->
     <div class="flex flex-col justify-center items-center">
+
+        <!-- Game title -->
         <h1 class="md:text-4xl my-10 font-semibold">Scrabble Game:</h1>
-        <div class="mx-auto grid grid-cols-3 md:pl-20 pl-10 font-semibold w-full ">
+
+        <!-- Game status display (word, scores, tiles remaining) -->
+        <div class="mx-auto grid grid-cols-3 md:pl-20 pl-10 font-semibold w-full">
+
+            <!-- Current word display -->
             <div class="col-start-2 col-end-4">
                 <h2 id="curr-word" class="mb-5 md:text-2xl">Word:</h2>
             </div>
-            <h2 id="tile-count" class="md:text-2xl">Tiles Left: </h2>
-            <h2 id="current-score"class="md:text-2xl">Current Score: </h2>
-            <h2 id="high-score" class="md:text-2xl">High Score: </h2>
+
+            <!-- Dynamic score and tile count labels -->
+            <h2 id="tile-count" class="md:text-2xl">Tiles Left:</h2>
+            <h2 id="current-score" class="md:text-2xl">Current Score:</h2>
+            <h2 id="high-score" class="md:text-2xl">High Score:</h2>
         </div>
-        
+
+        <!-- Game board and tile rack area -->
         <div class="flex flex-col justify-center items-center m-5">
+
+            <!-- Board wrapper (relative for absolute drop zones) -->
             <div id="board-wrapper" class="relative">
-                <img src="./graphics_data/Scrabble_Board_OneLine.png" alt="" class="relative object-cover min-h-[50px] h-[70px]">
-                <div id="drop-container" class="absolute grid grid- grid-cols-15 w-full h-full top-0">
+
+                <!-- Scrabble board background image -->
+                <img
+                    src="./graphics_data/Scrabble_Board_OneLine.png"
+                    alt=""
+                    class="relative object-cover min-h-[50px] h-[70px]"
+                >
+
+                <!-- Drop zones layered on top of board -->
+                <div
+                    id="drop-container"
+                    class="absolute grid grid-cols-15 w-full h-full top-0"
+                >
+                    <!-- Individual board squares (15 total) -->
                     <div id="drop-0" class="drop border-amber-900 border-2"></div>
                     <div id="drop-1" class="drop"></div>
                     <div id="drop-2" class="drop"></div>
@@ -60,18 +125,62 @@
                     <div id="drop-14" class="drop"></div>
                 </div>
             </div>
+
+            <!-- Tile rack -->
             <div id="tiles-start" class="relative w-fit mt-20">
-                <img src="./graphics_data/scrabble-tile-holder-406774_640.png" alt="scrabble tile holder" class="object-cover max-w-[500px] ">
-                <div id="tiles-container" class="absolute top-0 left-[25px] w-11/12 flex justify-evenly items-center h-full"></div>
+
+                <!-- Tile holder background image -->
+                <img
+                    src="./graphics_data/scrabble-tile-holder-406774_640.png"
+                    alt="scrabble tile holder"
+                    class="object-cover max-w-[500px]"
+                >
+
+                <!-- Container where draggable tiles are injected -->
+                <div
+                    id="tiles-container"
+                    class="absolute top-0 left-[25px] w-11/12 flex justify-evenly items-center h-full"
+                ></div>
             </div>
-            <p id="error-msg" class="mt-10 bg-red-700 text-white p-5 rounded-3xl hidden"></p>
+
+            <!-- Error message (shown for invalid words) -->
+            <p
+                id="error-msg"
+                class="mt-10 bg-red-700 text-white p-5 rounded-3xl hidden"
+            ></p>
         </div>
+
+        <!-- Game control buttons -->
         <div class="flex justify-center w-full mt-5">
-            <button id="next" class="w-fit px-10 py-2 bg-green-800 text-white font-medium rounded-lg hover:bg-green-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">NEXT</button>
-            <button id="new-hand" class=" w-fit px-10 py-2 bg-green-800 text-white font-medium rounded-lg hover:bg-green-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">NEW HAND</button>
-            <button id="reset" class=" w-fit px-10 py-2 bg-green-800 text-white font-medium rounded-lg hover:bg-green-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">RESET GAME</button>
+
+            <!-- Submit current word -->
+            <button
+                id="next"
+                class="w-fit px-10 py-2 bg-green-800 text-white font-medium rounded-lg hover:bg-green-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+            >
+                NEXT
+            </button>
+
+            <!-- Generate a new hand -->
+            <button
+                id="new-hand"
+                class="w-fit px-10 py-2 bg-green-800 text-white font-medium rounded-lg hover:bg-green-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+            >
+                NEW HAND
+            </button>
+
+            <!-- Reset entire game -->
+            <button
+                id="reset"
+                class="w-fit px-10 py-2 bg-green-800 text-white font-medium rounded-lg hover:bg-green-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+            >
+                RESET GAME
+            </button>
         </div>
     </div>
+
+    <!-- Main application script (ES module) -->
     <script type="module" src="./app.js"></script>
+
 </body>
 </html>

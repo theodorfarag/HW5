@@ -1,3 +1,16 @@
+/*
+ * Author: Theodor Farag
+ * Course: COMP.4630 – Mobile App Development I
+ * Assignment: HW5 – Scrabble Game
+ *
+ * Description:
+ * Styling rules for the Scrabble game UI, including
+ * board layout, tiles, and responsive design.
+ *
+ * Contact:
+ * Email: theodor_farag@student.uml.edu
+ */
+
 /* Style changes for the whole website  */
 body {
     font-family: "Poppins", "Roboto", sans-serif;
@@ -28,9 +41,9 @@ li:hover {
     color: #BC6C25;
 }
 
-
+/* style for the tiles and makes it appear over the tile image */
 .tile {
-    position: relative;  /* This is CRITICAL */
+    position: relative;  
     width: 50px;
     height: 50px;
     background-color: #F5DEB3;  /* Scrabble tile color */
@@ -53,7 +66,6 @@ li:hover {
 
 #drop-container > div{
     height: 100%;
-    /* width: calc(1/15 * 100%); */
 }
 .drop {
     display: flex;
