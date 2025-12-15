@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW5 Scrable</title>
+    <link rel="icon" href="./images/scrabble.png" type="images/png">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">    
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+</head>
+<body>
+    <!-- Nav Bar that is responsive -->
+    <nav class=" bg-[#283618] text-white border-b-2 border-amber-950 w-full h-auto">
+        <ul class="flex flex-row md:text-2xl h-full items-center">
+            <li class="active">
+                <a href="./index.html">
+                    <img src="./images/scrabble.png" alt="Scrable image" class="size-12"></li>
+                </a>
+            </li>
+            <li><a href="./index.html">Home</a></li>
+            <li class="active"><a href="/">Assignment</a></li>
+            <li><a href="/">Extra Cedit</a></li>
+        </ul>
+    </nav>
+    <div class="flex flex-col justify-center items-center">
+        <h1 class="md:text-4xl my-10 font-semibold">Scrabble Game:</h1>
+        <div class="mx-auto grid grid-cols-3 md:pl-20 pl-10 font-semibold w-full ">
+            <div class="col-start-2 col-end-4">
+                <h2 id="curr-word" class="mb-5 md:text-2xl">Word:</h2>
+            </div>
+            <h2 id="tile-count" class="md:text-2xl">Tiles Left: </h2>
+            <h2 id="current-score"class="md:text-2xl">Current Score: </h2>
+            <h2 id="high-score" class="md:text-2xl">High Score: </h2>
+        </div>
+        
+        <div class="flex flex-col justify-center items-center m-5">
+            <div id="board-wrapper" class="relative">
+                <img src="./graphics_data/Scrabble_Board_OneLine.png" alt="" class="relative object-cover min-h-[50px] h-[70px]">
+                <div id="drop-container" class="absolute grid grid- grid-cols-15 w-full h-full top-0">
+                    <div id="drop-0" class="drop border-amber-900 border-2"></div>
+                    <div id="drop-1" class="drop"></div>
+                    <div id="drop-2" class="drop"></div>
+                    <div id="drop-3" class="drop"></div>
+                    <div id="drop-4" class="drop"></div>
+                    <div id="drop-5" class="drop"></div>
+                    <div id="drop-6" class="drop"></div>
+                    <div id="drop-7" class="drop"></div>
+                    <div id="drop-8" class="drop"></div>
+                    <div id="drop-9" class="drop"></div>
+                    <div id="drop-10" class="drop"></div>
+                    <div id="drop-11" class="drop"></div>
+                    <div id="drop-12" class="drop"></div>
+                    <div id="drop-13" class="drop"></div>
+                    <div id="drop-14" class="drop"></div>
+                </div>
+            </div>
+            <div id="tiles-start" class="relative w-fit mt-20">
+                <img src="./graphics_data/scrabble-tile-holder-406774_640.png" alt="scrabble tile holder" class="object-cover max-w-[500px] ">
+                <div id="tiles-container" class="absolute top-0 left-[25px] w-11/12 flex justify-evenly items-center h-full"></div>
+            </div>
+            <p id="error-msg" class="mt-10 bg-red-700 text-white p-5 rounded-3xl hidden"></p>
+        </div>
+        <div class="flex justify-center w-full mt-5">
+            <button id="next" class="w-fit px-10 py-2 bg-green-800 text-white font-medium rounded-lg hover:bg-green-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">NEXT</button>
+            <button id="new-hand" class=" w-fit px-10 py-2 bg-green-800 text-white font-medium rounded-lg hover:bg-green-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">NEW HAND</button>
+            <button id="reset" class=" w-fit px-10 py-2 bg-green-800 text-white font-medium rounded-lg hover:bg-green-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">RESET GAME</button>
+        </div>
+    </div>
+    <script type="module" src="./app.js"></script>
+</body>
+</html>

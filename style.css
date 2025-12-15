@@ -1,0 +1,61 @@
+/* Style changes for the whole website  */
+body {
+    font-family: "Poppins", "Roboto", sans-serif;
+    background-color: #FEFAE0;
+    color: #283618;
+}
+
+button {
+    margin: 0 20px;
+}
+li {
+    box-sizing: border-box;
+    margin: 0px 10px;
+    padding: 1.25rem;
+}
+
+.active:hover {
+    background: inherit;
+    color: inherit;
+}
+.active {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+li:hover {
+    background: #FEFAE0;
+    color: #BC6C25;
+}
+
+
+.tile {
+    position: relative;  /* This is CRITICAL */
+    width: 50px;
+    height: 50px;
+    background-color: #F5DEB3;  /* Scrabble tile color */
+    border-radius: 3px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+    border: 2px solid #8B4513;
+    z-index: 100;
+}
+
+.tile:hover {
+    transform: scale(1.1);
+    z-index: 100;
+}
+
+#drop-container > div{
+    height: 100%;
+    /* width: calc(1/15 * 100%); */
+}
+.drop {
+    display: flex;
+    justify-content: center;
+}
